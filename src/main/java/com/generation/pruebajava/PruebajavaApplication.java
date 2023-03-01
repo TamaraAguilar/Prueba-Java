@@ -49,6 +49,7 @@ public class PruebajavaApplication {
   
 
   /*---------------------------------------PROMEDIO------------------------------------------------*/
+
   public static Double promedioNotas(ArrayList<Double> notas){
     Double suma = 0.0;
     for (int i = 0; i < notas.size(); i++) {
@@ -60,6 +61,7 @@ public class PruebajavaApplication {
    * (Sin embargo, voy a incluirlo de todos modos)   */
 
   /*---------------------------------------ESTADÍSTICAS------------------------------------------------*/
+
   public static void obtenerDatosNotas(ArrayList<Double> notas) {
     double mejorNota = notas.get(0);
     double peorNota = notas.get(0);
@@ -87,6 +89,7 @@ public class PruebajavaApplication {
  
 
     /*-------------------------------------VARIABLES--------------------------------------*/
+
     Scanner teclado = new Scanner(System.in);
     String nombre;
     String apellido;
@@ -112,14 +115,13 @@ public class PruebajavaApplication {
     System.out.print("Ingrese la cantidad de alumnos del curso: ");
     cantidadAlumnos = teclado.nextInt();
     teclado.nextLine();
-    if(cantidadAlumnos <= 0 || cantidadAlumnos == null || cantidadAlumnos.isEmpty()){
+    if(cantidadAlumnos <= 0){
       System.out.print("Error: La cantidad de alumnos debe ser mayor a cero, por favor intente de nuevo.");
     }
     }while(cantidadAlumnos <= 0);
 
 
     /*---------------------------------------NOTAS POR ALUMNO------------------------------------------------*/
-
 
     do{
 			System.out.print("Indique la cantidad de notas por alumnos: ");
@@ -131,7 +133,8 @@ public class PruebajavaApplication {
 		}while(cantidadNotas <= 0);
     
     /*---------------------------------------ARRAY DE ALUMNOS------------------------------------------------*/
-    ArrayList<Alumno> alumnos = new ArrayList<Alumno>(cantidadAlumnos);
+
+    ArrayList<Alumno> arrayAlumnos = new ArrayList<Alumno>(cantidadAlumnos);
     
 
        for (int i = 0; i < cantidadAlumnos; i++) {
@@ -166,14 +169,14 @@ public class PruebajavaApplication {
     /*---------------------------------------CREAR NUEVO OBJETO ALUMNO------------------------------------------------*/
     /*(Este nuevo objeto 'alumno' contiene los siguientes datos, incluyendo el Array de Notas) */
   Alumno alumno = new Alumno(curso, nombre, apellido, notasAlumnos, promedio);
-        // agregar el objeto Alumno al array
-        alumnos.add(alumno);
+        // agregar el objeto Alumno al array 'Alumnos'
+        arrayAlumnos.add(alumno);
       
     }
   
     /*---------------------------------------MOSTRAR DATOS DEL OBJETO ALUMNO------------------------------------------------*/
 
-    for (Alumno alumno : alumnos) {
+    for (Alumno alumno : arrayAlumnos) {
         System.out.println(alumno.toString());
         ArrayList<Double> notasAlumnos = alumno.getNotasAlumnos();
       obtenerDatosNotas(notasAlumnos);
